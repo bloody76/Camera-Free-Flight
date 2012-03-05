@@ -7,7 +7,9 @@
 #define WIDTH_SCREEN 640
 #define HEIGHT_SCREEN 480
 
-void Draw (std::vector<int>&, Camera&);
+/// We setup the camera.
+Camera camera;
+void Draw ();
 
 int main (int argc, char *argv[])
 {
@@ -22,8 +24,6 @@ int main (int argc, char *argv[])
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity ();
 
-    /// Here we setup the camera.
-    Camera camera;
     /// Set the perspective of Glu.
     camera.set_perspective (WIDTH_SCREEN, HEIGHT_SCREEN);
     /// Update one time all the values of the camera.
@@ -31,15 +31,12 @@ int main (int argc, char *argv[])
                    0.f, 0.f, 1.f,
                    3.1459f, 3.14159265f / 2,
                    1.f);
+    /// If you want to modify the speed of the camera, decomment this line.
+    /// camera.speed_set (2.f);
 
     SDL_EnableKeyRepeat (10, 10);
 
-    /// Let's start a vector of Quads
-    std::vector<int> quads;
-    for (int i = 0; i < 100; i++)
-      quads.push_back (i);
-
-    Draw (quads, camera);
+    Draw ();
 
     while (SDL_WaitEvent (&event))
     {
@@ -51,11 +48,11 @@ int main (int argc, char *argv[])
           case SDL_KEYDOWN:
             switch (event.key.keysym.sym)
             {
-                case SDLK_a:
+                case SDLK_e:
                   /// Turn down the camera of 0.04 radians.
                   camera.turn_down (0.04f);
                 break;
-                case SDLK_b:
+                case SDLK_q:
                   /// Turn up the camera of 0.04 radians.
                   camera.turn_up (0.04f);
                 break;
@@ -78,7 +75,7 @@ int main (int argc, char *argv[])
             }
           break;
         }
-        Draw (quads, camera);
+        Draw ();
     }
 
     return 0;
@@ -95,7 +92,7 @@ void draw_rectangle (double width, double height)
     glEnd();
 }
 
-void Draw (std::vector<int>& memory, Camera& camera)
+void Draw ()
 {
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -107,10 +104,8 @@ void Draw (std::vector<int>& memory, Camera& camera)
 
     /// The array 'c' contains 2 colors so as to alternate between the quads.
     int c[2] = {127, 254};
-    int i = 0;
     /// Let's draw something.
-    for (std::vector<int>::iterator itr = memory.begin ();
-        itr != memory.end (); i++, itr++)
+    for (int i = 0; i < 100; i++)
     {
       glTranslated (-5, 0, 0);
       glColor3ub (c[i % 2], c[i % 2], c[i % 2]);

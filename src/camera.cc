@@ -78,9 +78,12 @@ void Camera::move_backward (float d)
   lz_ = cos (phi_) + pz_;
 }
 
+#include <iostream>
 void Camera::turn_up (float rad)
 {
-  phi_ += rad;
+  phi_ -= rad;
+  if (phi_ < 0.01)
+    phi_ = 0.01f;
   lx_ = px_ + cos (theta_) * sin (phi_);
   ly_ = py_ + sin (theta_) * sin (phi_);
   lz_ = pz_ + cos (phi_);
@@ -88,7 +91,10 @@ void Camera::turn_up (float rad)
 
 void Camera::turn_down (float rad)
 {
-  phi_ -= rad;
+  phi_ += rad;
+  std::cout << phi_ << std::endl;
+  if (phi_ > M_PI - 0.01f)
+    phi_ = M_PI - 0.01f;
   lx_ = px_ + cos (theta_) * sin (phi_);
   ly_ = py_ + sin (theta_) * sin (phi_);
   lz_ = pz_ + cos (phi_);
