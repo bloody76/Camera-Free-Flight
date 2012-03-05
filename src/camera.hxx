@@ -200,21 +200,21 @@ void Camera::phi_set (float phi)
 }
 
 inline
-float Camera::distance_get () const
+float Camera::speed_get () const
 {
-  return distance_;
+  return speed_;
 }
 
 inline
-float Camera::distance_get ()
+float Camera::speed_get ()
 {
-  return distance_;
+  return speed_;
 }
 
 inline
-void Camera::distance_set (float distance)
+void Camera::speed_set (float speed)
 {
-  distance_ = distance;
+  speed_ = speed;
 }
 
 #endif /* !CAMERA_HXX_ */

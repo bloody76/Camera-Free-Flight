@@ -32,7 +32,6 @@ class Camera
   public:
     /// Update funtion so as to set all the attributes in one time.
     void update (float px, float py, float pz,
-                 float lx, float ly, float lz,
                  float rx, float ry, float rz,
                  float theta, float phi,
                  float distance);

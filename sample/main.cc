@@ -28,9 +28,8 @@ int main (int argc, char *argv[])
     camera.set_perspective (WIDTH_SCREEN, HEIGHT_SCREEN);
     /// Update one time all the values of the camera.
     camera.update (50.f, 0.f, 2.f,
-                  -10.f, 0.f, 2.f,
                    0.f, 0.f, 1.f,
-                   0.f, 3.14159265f / 2,
+                   3.1459f, 3.14159265f / 2,
                    1.f);
 
     SDL_EnableKeyRepeat (10, 10);
