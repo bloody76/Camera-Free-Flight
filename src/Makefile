@@ -3,7 +3,7 @@ OBJECTS	=	$(SOURCES:.cc=.o)
 TARGET	=	libcamera
 DIR = ../
 
-all: lib_dyn
+all: lib_sta
 
 lib_sta:
 	g++ -c $(SOURCES)
