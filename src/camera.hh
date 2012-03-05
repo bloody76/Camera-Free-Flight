@@ -47,6 +47,8 @@ class Camera
     void move_forward (float d);
     /// Move backward the camera with a distance d.
     void move_backward (float d);
+    /// Translate the camera with the vector (x, y, z).
+    void translate (float x, float y, float z);
   /** \} */
 
   /** \name Accessors.

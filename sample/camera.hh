@@ -34,7 +34,7 @@ class Camera
     void update (float px, float py, float pz,
                  float rx, float ry, float rz,
                  float theta, float phi,
-                 float distance);
+                 float speed);
     /// Turn up the camera with an angle of rad radians.
     void turn_up (float rad);
     /// Turn down the camera with an angle of rad radians.
@@ -47,6 +47,8 @@ class Camera
     void move_forward (float d);
     /// Move backward the camera with a distance d.
     void move_backward (float d);
+    /// Translate the camera with the vector (x, y, z).
+    void translate (float x, float y, float z);
   /** \} */
 
   /** \name Accessors.
@@ -118,12 +120,12 @@ class Camera
     float phi_get ();
     /// Set the angle y.
     void phi_set (float);
-    /// Return the distance.
-    float distance_get () const;
-    /// Return the distance.
-    float distance_get ();
-    /// Set the distance.
-    void distance_set (float);
+    /// Return the speed.
+    float speed_get () const;
+    /// Return the speed.
+    float speed_get ();
+    /// Set the speed.
+    void speed_set (float);
     /** \} */
 
   private:
@@ -142,8 +144,8 @@ class Camera
     /// The angle of the camera.
     float theta_;
     float phi_;
-    /// The distance between the eye and the point it is looking at.
-    float distance_;
+    /// The speed of the camera.
+    float speed_;
 };
 
 # include "camera.hxx"

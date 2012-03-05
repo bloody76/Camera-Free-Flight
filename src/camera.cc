@@ -58,27 +58,34 @@ void Camera::turn_right (float rad)
 
 void Camera::move_forward (float d)
 {
-  px_ += speed_ * cos (theta_) * sin (phi_) * d;
-  py_ += speed_ * sin (theta_) * sin (phi_) * d;
-  pz_ += speed_ * cos (phi_) * d;
+  float dx = speed_ * cos (theta_) * sin (phi_) * d;
+  float dy = speed_ * sin (theta_) * sin (phi_) * d;
+  float dz = speed_ * cos (phi_) * d;
 
-  lx_ = cos (theta_) * sin (phi_) + px_;
-  ly_ = sin (theta_) * sin (phi_) + py_;
-  lz_ = cos (phi_) + pz_;
+  px_ += dx;
+  py_ += dy;
+  pz_ += dz;
+
+  lx_ += dx;
+  ly_ += dy;
+  lz_ += dz;
 }
 
 void Camera::move_backward (float d)
 {
-  px_ -= speed_ * cos (theta_) * sin (phi_) * d;
-  py_ -= speed_ * sin (theta_) * sin (phi_) * d;
-  pz_ -= speed_ * cos (phi_) * d;
+  float dx = speed_ * cos (theta_) * sin (phi_) * d;
+  float dy = speed_ * sin (theta_) * sin (phi_) * d;
+  float dz = speed_ * cos (phi_) * d;
 
-  lx_ = cos (theta_) * sin (phi_) * + px_;
-  ly_ = sin (theta_) * sin (phi_) * + py_;
-  lz_ = cos (phi_) + pz_;
+  px_ -= dx;
+  py_ -= dy;
+  pz_ -= dz;
+
+  lx_ -= dx;
+  ly_ -= dy;
+  lz_ -= dz;
 }
 
-#include <iostream>
 void Camera::turn_up (float rad)
 {
   phi_ -= rad;
@@ -92,10 +99,20 @@ void Camera::turn_up (float rad)
 void Camera::turn_down (float rad)
 {
   phi_ += rad;
-  std::cout << phi_ << std::endl;
   if (phi_ > M_PI - 0.01f)
     phi_ = M_PI - 0.01f;
   lx_ = px_ + cos (theta_) * sin (phi_);
   ly_ = py_ + sin (theta_) * sin (phi_);
   lz_ = pz_ + cos (phi_);
+}
+
+void Camera::translate (float x, float y, float z)
+{
+  px_ += x;
+  py_ += y;
+  pz_ += z;
+
+  lx_ += x;
+  ly_ += y;
+  lz_ += z;
 }

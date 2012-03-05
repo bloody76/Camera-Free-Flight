@@ -56,6 +56,10 @@ int main (int argc, char *argv[])
                   /// Turn up the camera of 0.04 radians.
                   camera.turn_up (0.04f);
                 break;
+                case SDLK_w:
+                  /// Translate the camera with the vector (0, 0, 1).
+                  camera.translate (0.f, 0.f, 1.f);
+                break;
                 case SDLK_UP:
                   /// Move forward the camera with a distance of 2.
                   camera.move_forward (2);
