@@ -1,1 +1,14 @@
 A C++/OpenGL project that will implement a very simple freeflight camera.
+
+To generate the static library:
+  $ make
+
+To generate the dynamic library:
+  $ make lib_dyn
+
+To generate the sample and run it:
+  $ make sample
+  $ ./CameraSample
+
+To clean the repo:
+  $ make clean
