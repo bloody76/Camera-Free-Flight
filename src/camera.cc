@@ -116,3 +116,14 @@ void Camera::translate (float x, float y, float z)
   ly_ += y;
   lz_ += z;
 }
+
+void Camera::move_to (float x, float y, float z)
+{
+  px_ = x;
+  py_ = y;
+  pz_ = z;
+
+  lx_ = px_ + cos (theta_) * sin (phi_);
+  ly_ = py_ + sin (theta_) * sin (phi_);
+  lz_ = pz_ + cos (phi_);
+}
