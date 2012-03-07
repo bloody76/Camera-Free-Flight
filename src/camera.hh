@@ -1,3 +1,8 @@
+/**
+** \file camera.hh
+** \author "Vincent Latrouite"
+** \brief Contains all the functions of the camera.
+*/
 #ifndef CAMERA_HH_
 # define CAMERA_HH_
 

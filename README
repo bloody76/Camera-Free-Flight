@@ -12,3 +12,6 @@ To generate the sample and run it:
 
 To clean the repo:
   $ make clean
+
+To generate the doxygen html (index.html is in doc/html/):
+  $ make doc
